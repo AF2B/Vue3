@@ -51,7 +51,7 @@ Entender o ciclo de vida do Vue é fundamental para gerenciar o comportamento do
 Em Vue.js, o "Watchers" é um recurso que permite que você reaja às mudanças nos dados reativos do componente e realize ações específicas quando essas mudanças ocorrem. O watch() é uma função que você pode usar para criar um observador que ficará "observando" uma expressão reativa e executará uma função de callback sempre que essa expressão for modificada.
 
 Sintaxe do watch():
-```
+```ts
 watch(
   // Expressão a ser observada (pode ser uma função computada, uma propriedade reativa ou uma função que retorna um valor reativo)
   expression,
