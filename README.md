@@ -51,7 +51,7 @@ Entender o ciclo de vida do Vue é fundamental para gerenciar o comportamento do
 Em Vue.js, o "Watchers" é um recurso que permite que você reaja às mudanças nos dados reativos do componente e realize ações específicas quando essas mudanças ocorrem. O watch() é uma função que você pode usar para criar um observador que ficará "observando" uma expressão reativa e executará uma função de callback sempre que essa expressão for modificada.
 
 Sintaxe do watch():
-`
+```
 watch(
   // Expressão a ser observada (pode ser uma função computada, uma propriedade reativa ou uma função que retorna um valor reativo)
   expression,
@@ -67,7 +67,7 @@ watch(
     // immediate: boolean - Executar a função de callback imediatamente após a criação do observador (padrão: false)
   }
 );
-`
+```
 ### Usabilidade do watch():
 O watch() é útil quando você precisa executar lógica complexa ou reativa em resposta a alterações específicas nos dados do componente. Algumas situações em que o watch() pode ser usado incluem:
 
@@ -83,8 +83,8 @@ Se você tiver dados assíncronos que podem ser alterados após uma chamada de A
 Realizar Ações de Limpeza:
 Em alguns casos, você pode precisar executar ações de limpeza ou liberação de recursos quando uma propriedade reativa específica for alterada ou quando o componente for desmontado. O watch() pode ser usado para realizar essas ações antes ou depois das mudanças.
 
-## Exemplo de uso do `watch()`:
-`
+## Exemplo de uso do ```watch()```:
+```
 <template>
   <div>
     <p>Contador: {{ counter }}</p>
@@ -109,7 +109,7 @@ export default {
     watch(
       () => state.counter,
       (newValue, oldValue) => {
-        console.log(`Valor anterior: ${oldValue}, Novo valor: ${newValue}`);
+        console.log(```Valor anterior: ${oldValue}, Novo valor: ${newValue}```);
         // Outras ações baseadas na mudança do contador podem ser realizadas aqui
       }
     );
@@ -121,19 +121,19 @@ export default {
   },
 };
 </script>
-`
+```
 
 No Vue 3, a diretiva computed foi substituída pela função computed() da Composition API. O computed() é um recurso que permite criar propriedades reativas que dependem de outros dados reativos. Essas propriedades computadas são calculadas automaticamente pelo Vue e atualizadas somente quando suas dependências são modificadas.
 
 ### Sintaxe do computed():
-`
+```
 import { computed } from 'vue';
 
 const myComputedProperty = computed(() => {
   // Lógica computada baseada em outras propriedades reativas
   return someReactiveData.value + anotherReactiveData.value;
 });
-`
+```
 ### Aplicabilidade do computed():
 O computed() é útil quando você precisa realizar cálculos ou transformações com base em propriedades reativas existentes. Ele ajuda a manter a lógica reativa organizada e facilita o desenvolvimento de interfaces de usuário responsivas. Alguns casos comuns de aplicação do computed() são:
 
@@ -150,7 +150,7 @@ Ao filtrar ou classificar uma lista de itens com base em certos critérios, o co
 No caso de validação de entradas de formulário, o computed() pode ser empregado para verificar se os campos atendem a determinados critérios e gerar mensagens de erro dinâmicas.
 
 ### Exemplo de uso do computed():
-`
+```
 <template>
   <div>
     <p>Preço do Item: {{ price }}</p>
@@ -180,7 +180,7 @@ export default {
   },
 };
 </script>
-`
+```
 Neste exemplo, criamos uma propriedade reativa price e uma propriedade reativa quantity, representando o preço e a quantidade de um item, respectivamente. Usando o computed(), definimos a propriedade computada total, que depende dos valores de price e quantity. Sempre que o preço ou a quantidade for alterada, o Vue automaticamente recalculará o valor da propriedade total.
 
 Em resumo, o computed() é uma maneira eficiente de criar propriedades reativas derivadas de outras propriedades reativas, evitando redundâncias de cálculos e mantendo a interface do usuário atualizada de forma reativa. Ele é particularmente útil para cálculos e formatações complexas que dependem de dados reativos e devem ser atualizados automaticamente quando esses dados mudam.
@@ -214,7 +214,7 @@ Quando você precisa compor um estado mais avançado, com diversas propriedades 
 O reactive é muito usado em gerenciadores de estado, como o Vuex ou o Pinia, para criar o estado global da aplicação e reagir às mudanças de estado.
 
 ## Exemplo de Uso de ref e reactive:
-`
+```
 <template>
   <div>
     <p>Counter: {{ counter.value }}</p>
@@ -249,7 +249,7 @@ export default {
   },
 };
 </script>
-`
+```
 Neste exemplo, utilizamos ref para criar o counter, que é um simples valor numérico, e reactive para criar o state, que é um objeto reativo com propriedades username, age e todos.
 
 Em resumo, ref é usado para criar dados reativos de valores primitivos e reactive é usado para criar objetos reativos que contêm propriedades reativas. Escolha a abordagem adequada ao lidar com diferentes tipos de dados e requisitos de estado na sua aplicação Vue 3.
@@ -270,7 +270,7 @@ Respeito à Flux Arquitetura: Para projetos que preferem seguir uma arquitetura 
 
 Exemplos Práticos de Uso do Pinia:
 Exemplo 1: Contador Global:
-`
+```
 <!-- main.js -->
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
@@ -279,8 +279,8 @@ import App from './App.vue';
 const pinia = createPinia();
 
 createApp(App).use(pinia).mount('#app');
-`
-`
+```
+```
 <!-- store/counter.js -->
 import { defineStore } from 'pinia';
 
@@ -298,8 +298,8 @@ export const useCounterStore = defineStore({
     },
   },
 });
-`
-`
+```
+```
 <!-- components/Counter.vue -->
 <template>
   <div>
@@ -324,11 +324,11 @@ export default {
   },
 };
 </script>
-`
+```
 Neste exemplo, criamos um contador global utilizando o Pinia. O estado do contador é gerenciado pelo useCounterStore, que define as propriedades reativas count e as ações increment e decrement. Os componentes têm acesso ao contador global utilizando o useCounterStore, que é compartilhado entre todos os componentes.
 
 Exemplo 2: Lista de Tarefas:
-`
+```
 <!-- store/todo.js -->
 import { defineStore } from 'pinia';
 
@@ -346,8 +346,8 @@ export const useTodoStore = defineStore({
     },
   },
 });
-`
-`
+```
+```
 <!-- components/TodoList.vue -->
 <template>
   <div>
@@ -383,7 +383,7 @@ export default {
   },
 };
 </script>
-`
+```
 Neste exemplo, utilizamos o Pinia para criar um gerenciador de estado para uma lista de tarefas. O useTodoStore gerencia o estado da lista de tarefas, que é compartilhado entre todos os componentes. O componente TodoList utiliza as ações addTodo e removeTodo do store para adicionar e remover tarefas da lista.
 
 ## Por que Usar um Gerenciador de Estado como o Pinia?
@@ -423,7 +423,7 @@ O Vue Router facilita a navegação programática entre as rotas, permitindo que
 
 ### Exemplos Práticos de Uso do Vue Router:
 Exemplo 1: Rotas Simples:
-`
+```
 <!-- main.js -->
 import { createRouter, createWebHistory } from 'vue-router';
 import { createApp } from 'vue';
@@ -444,8 +444,8 @@ const router = createRouter({
 });
 
 createApp(App).use(router).mount('#app');
-`
-`
+```
+```
 <!-- App.vue -->
 <template>
   <div>
@@ -454,12 +454,12 @@ createApp(App).use(router).mount('#app');
     <router-view></router-view>
   </div>
 </template>
-`
+```
 
 Neste exemplo, criamos um roteador simples com duas rotas: Home e About. O componente App utiliza o router-link para navegar entre as rotas e o router-view para renderizar o componente correspondente à rota atual.
 
 Exemplo 2: Rotas Dinâmicas:
-`
+```
 <!-- main.js -->
 import { createRouter, createWebHistory } from 'vue-router';
 import { createApp } from 'vue';
@@ -476,8 +476,8 @@ const router = createRouter({
 });
 
 createApp(App).use(router).mount('#app');
-`
-`
+```
+```
 <!-- App.vue -->
 <template>
   <div>
@@ -486,12 +486,12 @@ createApp(App).use(router).mount('#app');
     <router-view></router-view>
   </div>
 </template>
-`
+```
 
 Neste exemplo, criamos uma rota dinâmica com um parâmetro id. O componente App utiliza o router-link para navegar entre as rotas e o router-view para renderizar o componente correspondente à rota atual.
 
 Exemplo 3: Rotas Aninhadas:
-`
+```
 <!-- main.js -->
 import { createRouter, createWebHistory } from 'vue-router';
 import { createApp } from 'vue';
@@ -518,8 +518,8 @@ const router = createRouter({
 });
 
 createApp(App).use(router).mount('#app');
-`
-`
+```
+```
 <!-- App.vue -->
 <template>
   <div>
@@ -528,12 +528,12 @@ createApp(App).use(router).mount('#app');
     <router-view></router-view>
   </div>
 </template>
-`
+```
 
 Neste exemplo, criamos rotas aninhadas para o usuário com id 1. O componente App utiliza o router-link para navegar entre as rotas e o router-view para renderizar o componente correspondente à rota atual.
 
 Exemplo 4: Navegação Programática:
-`
+```
 <!-- main.js -->
 import { createRouter, createWebHistory } from 'vue-router';
 import { createApp } from 'vue';
@@ -550,8 +550,8 @@ const router = createRouter({
 });
 
 createApp(App).use(router).mount('#app');
-`
-`
+```
+```
 <!-- App.vue -->
 <template>
   <div>
@@ -567,9 +567,9 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const navigateToUser = (id) => {
-  router.push(`/user/${id}`);
+  router.push(```/user/${id}```);
 };
 </script>
-`
+```
 
 Neste exemplo, criamos um roteador simples com uma rota dinâmica. O componente App utiliza o router-link para navegar entre as rotas e o router-view para renderizar o componente correspondente à rota atual. O componente também utiliza o useRouter para navegar programaticamente para uma rota específica.
